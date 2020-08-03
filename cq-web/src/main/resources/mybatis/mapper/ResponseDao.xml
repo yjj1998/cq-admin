@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cq.login.dao.ResponseDao">
+  <resultMap id="BaseResultMap" type="com.cq.login.pojo.entity.Response">
+    <id column="TransCode" jdbcType="TINYINT" property="transcode" />
+    <result column="ErrorMsg" jdbcType="VARCHAR" property="errormsg" />
+    <result column="InTime" jdbcType="VARCHAR" property="intime" />
+    <result column="OutTime" jdbcType="VARCHAR" property="outtime" />
+    <result column="Shift" jdbcType="INTEGER" property="shift" />
+    <result column="Rules" jdbcType="INTEGER" property="rules" />
+    <result column="WorkDate" jdbcType="TIMESTAMP" property="workdate" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TransCode, ErrorMsg, InTime, OutTime, Shift, Rules, WorkDate, `Name`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from response
+    where TransCode = #{transcode,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
+    delete from response
+    where TransCode = #{transcode,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" keyColumn="TransCode" keyProperty="transcode" parameterType="com.cq.login.pojo.entity.Response" useGeneratedKeys="true">
+    insert into response (ErrorMsg, InTime, OutTime, 
+      Shift, Rules, WorkDate, 
+      `Name`)
+    values (#{errormsg,jdbcType=VARCHAR}, #{intime,jdbcType=VARCHAR}, #{outtime,jdbcType=VARCHAR}, 
+      #{shift,jdbcType=INTEGER}, #{rules,jdbcType=INTEGER}, #{workdate,jdbcType=TIMESTAMP}, 
+      #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="TransCode" keyProperty="transcode" parameterType="com.cq.login.pojo.entity.Response" useGeneratedKeys="true">
+    insert into response
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="errormsg != null">
+        ErrorMsg,
+      </if>
+      <if test="intime != null">
+        InTime,
+      </if>
+      <if test="outtime != null">
+        OutTime,
+      </if>
+      <if test="shift != null">
+        Shift,
+      </if>
+      <if test="rules != null">
+        Rules,
+      </if>
+      <if test="workdate != null">
+        WorkDate,
+      </if>
+      <if test="name != null">
+        `Name`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="errormsg != null">
+        #{errormsg,jdbcType=VARCHAR},
+      </if>
+      <if test="intime != null">
+        #{intime,jdbcType=VARCHAR},
+      </if>
+      <if test="outtime != null">
+        #{outtime,jdbcType=VARCHAR},
+      </if>
+      <if test="shift != null">
+        #{shift,jdbcType=INTEGER},
+      </if>
+      <if test="rules != null">
+        #{rules,jdbcType=INTEGER},
+      </if>
+      <if test="workdate != null">
+        #{workdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cq.login.pojo.entity.Response">
+    update response
+    <set>
+      <if test="errormsg != null">
+        ErrorMsg = #{errormsg,jdbcType=VARCHAR},
+      </if>
+      <if test="intime != null">
+        InTime = #{intime,jdbcType=VARCHAR},
+      </if>
+      <if test="outtime != null">
+        OutTime = #{outtime,jdbcType=VARCHAR},
+      </if>
+      <if test="shift != null">
+        Shift = #{shift,jdbcType=INTEGER},
+      </if>
+      <if test="rules != null">
+        Rules = #{rules,jdbcType=INTEGER},
+      </if>
+      <if test="workdate != null">
+        WorkDate = #{workdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        `Name` = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TransCode = #{transcode,jdbcType=TINYINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cq.login.pojo.entity.Response">
+    update response
+    set ErrorMsg = #{errormsg,jdbcType=VARCHAR},
+      InTime = #{intime,jdbcType=VARCHAR},
+      OutTime = #{outtime,jdbcType=VARCHAR},
+      Shift = #{shift,jdbcType=INTEGER},
+      Rules = #{rules,jdbcType=INTEGER},
+      WorkDate = #{workdate,jdbcType=TIMESTAMP},
+      `Name` = #{name,jdbcType=VARCHAR}
+    where TransCode = #{transcode,jdbcType=TINYINT}
+  </update>
+</mapper>

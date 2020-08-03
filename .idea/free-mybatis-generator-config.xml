@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PersistentConfig">
+    <option name="historyConfigList">
+      <map>
+        <entry key="request">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="cq-web/src/main/java" />
+              <option name="daoName" value="RequestDao" />
+              <option name="daoPackage" value="com.cq.login.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="cq-pojo/src/main/java" />
+              <option name="modelName" value="Request" />
+              <option name="modelPackage" value="com.cq.login.pojo.entity" />
+              <option name="name" value="request" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="OptID" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="request" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="cq-web/src/main/resources/mybatis" />
+              <option name="xmlPackage" value="mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="response">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="cq-web/src/main/java" />
+              <option name="daoName" value="ResponseDao" />
+              <option name="daoPackage" value="com.cq.login.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="cq-pojo/src/main/java" />
+              <option name="modelName" value="Response" />
+              <option name="modelPackage" value="com.cq.login.pojo.entity" />
+              <option name="name" value="response" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="TransCode" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="response" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources/mybatis" />
+              <option name="xmlPackage" value="mapper" />
+            </Config>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

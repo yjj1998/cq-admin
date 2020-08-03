@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cq.login.dao.RequestDao">
+  <resultMap id="BaseResultMap" type="com.cq.login.pojo.entity.Request">
+    <id column="OptID" jdbcType="INTEGER" property="optid" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="LaneHex" jdbcType="VARCHAR" property="lanehex" />
+    <result column="WorkDate" jdbcType="TIMESTAMP" property="workdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    OptID, `Password`, LaneHex, WorkDate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from request
+    where OptID = #{optid,jdbcType=INTEGER}
+  </select>
+ 
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from request
+    where OptID = #{optid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="OptID" keyProperty="optid" parameterType="com.cq.login.pojo.entity.Request" useGeneratedKeys="true">
+    insert into request (`Password`, LaneHex, WorkDate
+      )
+    values (#{password,jdbcType=VARCHAR}, #{lanehex,jdbcType=VARCHAR}, #{workdate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="OptID" keyProperty="optid" parameterType="com.cq.login.pojo.entity.Request" useGeneratedKeys="true">
+    insert into request
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="password != null">
+        `Password`,
+      </if>
+      <if test="lanehex != null">
+        LaneHex,
+      </if>
+      <if test="workdate != null">
+        WorkDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="lanehex != null">
+        #{lanehex,jdbcType=VARCHAR},
+      </if>
+      <if test="workdate != null">
+        #{workdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cq.login.pojo.entity.Request">
+    update request
+    <set>
+      <if test="password != null">
+        `Password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="lanehex != null">
+        LaneHex = #{lanehex,jdbcType=VARCHAR},
+      </if>
+      <if test="workdate != null">
+        WorkDate = #{workdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where OptID = #{optid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cq.login.pojo.entity.Request">
+    update request
+    set `Password` = #{password,jdbcType=VARCHAR},
+      LaneHex = #{lanehex,jdbcType=VARCHAR},
+      WorkDate = #{workdate,jdbcType=TIMESTAMP}
+    where OptID = #{optid,jdbcType=INTEGER}
+  </update>
+  
+  <!--                         自己写的                  -->
+  <select id="loginCheck" resultType="java.lang.Integer">
+    select 
+    <include refid="Base_Column_List"/>
+    from 
+    request
+    <where>
+    <if test="optid != null">
+      and OptID = #{optid,jdbcType=INTEGER},
+    </if>
+      <if test="password != null">
+      and `Password`= #{password,jdbcType=VARCHAR},
+      </if>
+    </where>
+  </select>
+</mapper>
