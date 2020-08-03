@@ -6,6 +6,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
  * creator:于竞杰
  * date:2020/7/28
  * time:0:50
+ * 测试用
  */
 public class PasswordUtil {
     private static final String SALT="cq-login";
